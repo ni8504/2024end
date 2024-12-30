@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>FitClub 2024 Closeout Special</title>
 
   <!-- Include Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     /* Reset default margins and paddings */
@@ -15,7 +15,7 @@
       box-sizing: border-box;
     }
 
-    /* Body Styling */
+    /* Body and HTML */
     html, body {
       width: 100%;
       height: 100%;
@@ -45,80 +45,67 @@
       background-image: url('https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/west%20weights2%20%281%29.JPG');
       background-size: cover;
       background-position: center;
-      filter: brightness(0.6); /* Darken image for text contrast */
+      filter: brightness(0.6); /* Darken image for better contrast */
       z-index: 0;
-    }
-
-    /* Fireworks Container */
-    .fireworks {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* Fireworks shouldn't interfere with user interactions */
-      z-index: 1;
-    }
-
-    .firework {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      opacity: 0;
-      animation-name: explode;
-      animation-iteration-count: 1;
-      animation-timing-function: ease-out;
-      animation-fill-mode: forwards;
-    }
-
-    /* Keyframes for Firework Animation */
-    @keyframes explode {
-      0% {
-        transform: scale(0) rotate(0deg);
-        opacity: 0;
-      }
-      40% {
-        transform: scale(1.5) rotate(45deg);
-        opacity: 1;
-      }
-      70% {
-        transform: scale(1) rotate(-45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(2) rotate(25deg);
-        opacity: 0;
-      }
     }
 
     /* Content Wrapper */
     .banner-content {
       position: relative;
-      z-index: 2;
-      padding: 20px;
+      z-index: 1;
       max-width: 800px;
       width: 100%;
+      padding: 20px;
     }
 
     /* Main Message */
     .main-message {
+      font-family: 'Pacifico', cursive; /* More engaging, handwritten style */
       font-size: 3em;
-      margin-bottom: 0.5em;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-      padding: 0 20px;
+      margin-bottom: 0.4em;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+      line-height: 1.2;
     }
 
-    /* Highlights */
-    .highlights {
-      font-size: 1.5em;
+    /* Offer Details */
+    .offer-details {
+      font-size: 1.4em;
       margin-bottom: 1em;
-      line-height: 1.4;
-      padding: 0 20px;
+      line-height: 1.5;
     }
 
-    .highlights div {
-      margin-bottom: 0.5em;
+    .offer-details strong {
+      color: #FFD700; /* Gold accent for emphasis */
+    }
+
+    /* Countdown Timer */
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 1em;
+      flex-wrap: wrap;
+    }
+
+    .countdown-timer div {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      padding: 10px 15px;
+      min-width: 60px;
+    }
+
+    .countdown-timer span {
+      display: block;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .countdown-timer label {
+      display: block;
+      font-size: 0.8em;
+      color: #FFD700;
+      margin-top: 5px;
+      text-transform: uppercase;
     }
 
     /* Responsive Design */
@@ -126,8 +113,11 @@
       .main-message {
         font-size: 2.5em;
       }
-      .highlights {
-        font-size: 1.3em;
+      .offer-details {
+        font-size: 1.2em;
+      }
+      .countdown-timer span {
+        font-size: 1.6em;
       }
     }
 
@@ -135,8 +125,11 @@
       .main-message {
         font-size: 2em;
       }
-      .highlights {
-        font-size: 1.1em;
+      .offer-details {
+        font-size: 1em;
+      }
+      .countdown-timer span {
+        font-size: 1.4em;
       }
     }
   </style>
@@ -146,58 +139,73 @@
     <!-- Background Image -->
     <div class="banner-background"></div>
 
-    <!-- Fireworks Container -->
-    <div class="fireworks"></div>
-
     <!-- Content -->
     <div class="banner-content">
-      <div class="main-message">Jump-Start 2024 with FitClub!</div>
-      <div class="highlights">
-        <div>Pay just <strong>$20.24</strong> to get started</div>
-        <div><strong>No dues until Jan 31st</strong></div>
-        <div>Join before Jan 1 and lock in this offer</div>
+      <div class="main-message">Get a Jump on 2025 with FitClub!</div>
+
+      <div class="offer-details">
+        Pay just <strong>$20.24</strong> to start<br />
+        <strong>No dues until Jan 31st</strong><br />
+        Join before Jan 1 to lock in this offer!
+      </div>
+
+      <!-- 2025 Countdown Timer -->
+      <div class="countdown-timer">
+        <div>
+          <span id="days">00</span>
+          <label>Days</label>
+        </div>
+        <div>
+          <span id="hours">00</span>
+          <label>Hours</label>
+        </div>
+        <div>
+          <span id="minutes">00</span>
+          <label>Minutes</label>
+        </div>
+        <div>
+          <span id="seconds">00</span>
+          <label>Seconds</label>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript to Generate Fireworks -->
+  <!-- JavaScript for 2025 Countdown -->
   <script>
-    const fireworkContainer = document.querySelector('.fireworks');
-    const fireworkCount = 25; // Adjust the number of fireworks
-    const possibleColors = [
-      '#ff0000', '#ffa500', '#ffff00', '#00ff00', '#00ffff',
-      '#0000ff', '#ff00ff', '#ff69b4', '#ff4500', '#ffd700'
-    ];
+    // Set target date for January 1, 2025 at 00:00:00
+    const targetDate = new Date('January 1, 2025 00:00:00').getTime();
 
-    for (let i = 0; i < fireworkCount; i++) {
-      // Create a firework element
-      const firework = document.createElement('div');
-      firework.classList.add('firework');
+    // Countdown updater
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
 
-      // Randomize color
-      const randomColor = possibleColors[Math.floor(Math.random() * possibleColors.length)];
-      firework.style.backgroundColor = randomColor;
+      if (distance <= 0) {
+        // If time is up, display all zeros
+        document.getElementById('days').innerText = '00';
+        document.getElementById('hours').innerText = '00';
+        document.getElementById('minutes').innerText = '00';
+        document.getElementById('seconds').innerText = '00';
+        return;
+      }
 
-      // Randomize position
-      firework.style.left = Math.random() * 100 + '%';
-      firework.style.top = Math.random() * 100 + '%';
+      // Calculate time units
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      // Randomize size
-      // The initial size is small (10px by 10px), but the scale transform will expand it
-      const sizeScale = Math.random() * 1.5 + 0.5; // scale between 0.5 and 2
-      // We'll apply this scale factor to the animation timing if needed
+      // Update HTML
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+    };
 
-      // Randomize animation duration
-      const duration = Math.random() * 2 + 1; // Durations between 1s and 3s
-      firework.style.animationDuration = duration + 's';
-
-      // Randomize animation delay
-      const delay = Math.random() * 3; // 0 to 3 seconds
-      firework.style.animationDelay = delay + 's';
-
-      // Append to container
-      fireworkContainer.appendChild(firework);
-    }
+    // Update every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
   </script>
 </body>
 </html>
