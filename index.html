@@ -42,7 +42,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('YOUR_NEW_YEAR_BACKGROUND_IMAGE_URL_HERE');
+      background-image: url('https://www.fitclub.net/sites/ob-143.app.sitewright.io/files/image/2024-09/west%20weights2%20%281%29.JPG');
       background-size: cover;
       background-position: center;
       filter: brightness(0.6); /* Darken image for text contrast */
@@ -62,10 +62,10 @@
 
     .firework {
       position: absolute;
-      font-size: 1em;
-      color: #fff;
-      opacity: 0.9;
-      user-select: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0;
       animation-name: explode;
       animation-iteration-count: 1;
       animation-timing-function: ease-out;
@@ -78,16 +78,16 @@
         transform: scale(0) rotate(0deg);
         opacity: 0;
       }
-      30% {
-        transform: scale(1.5) rotate(20deg);
+      40% {
+        transform: scale(1.5) rotate(45deg);
         opacity: 1;
       }
       70% {
-        transform: scale(1) rotate(-20deg);
+        transform: scale(1) rotate(-45deg);
         opacity: 1;
       }
       100% {
-        transform: scale(2) rotate(20deg);
+        transform: scale(2) rotate(25deg);
         opacity: 0;
       }
     }
@@ -121,22 +121,6 @@
       margin-bottom: 0.5em;
     }
 
-    /* Call to Action Button */
-    .cta-button {
-      display: inline-block;
-      padding: 15px 30px;
-      background-color: #ff0000;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 1.2em;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: default; /* No link needed, so cursor is default */
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       .main-message {
@@ -144,10 +128,6 @@
       }
       .highlights {
         font-size: 1.3em;
-      }
-      .cta-button {
-        font-size: 1.1em;
-        padding: 12px 25px;
       }
     }
 
@@ -157,10 +137,6 @@
       }
       .highlights {
         font-size: 1.1em;
-      }
-      .cta-button {
-        font-size: 1em;
-        padding: 10px 20px;
       }
     }
   </style>
@@ -181,45 +157,43 @@
         <div><strong>No dues until Jan 31st</strong></div>
         <div>Join before Jan 1 and lock in this offer</div>
       </div>
-      <div class="cta-button">Join Today & Transform Your New Year</div>
     </div>
   </div>
 
   <!-- JavaScript to Generate Fireworks -->
   <script>
     const fireworkContainer = document.querySelector('.fireworks');
-    const fireworkCount = 20; // Adjust the number of fireworks
-    const possibleEmojis = ['🎆','🎇','💥','❇️']; // Variety of firework-like emojis
+    const fireworkCount = 25; // Adjust the number of fireworks
+    const possibleColors = [
+      '#ff0000', '#ffa500', '#ffff00', '#00ff00', '#00ffff',
+      '#0000ff', '#ff00ff', '#ff69b4', '#ff4500', '#ffd700'
+    ];
 
     for (let i = 0; i < fireworkCount; i++) {
       // Create a firework element
       const firework = document.createElement('div');
       firework.classList.add('firework');
 
-      // Randomly pick an emoji from the list
-      const randomEmoji = possibleEmojis[Math.floor(Math.random() * possibleEmojis.length)];
-      firework.textContent = randomEmoji;
-
-      // Randomize size
-      const size = Math.random() * 1.5 + 0.5; // Sizes between 0.5em and 2em
-      firework.style.fontSize = size + 'em';
+      // Randomize color
+      const randomColor = possibleColors[Math.floor(Math.random() * possibleColors.length)];
+      firework.style.backgroundColor = randomColor;
 
       // Randomize position
-      // Firework can appear anywhere in the container
       firework.style.left = Math.random() * 100 + '%';
       firework.style.top = Math.random() * 100 + '%';
+
+      // Randomize size
+      // The initial size is small (10px by 10px), but the scale transform will expand it
+      const sizeScale = Math.random() * 1.5 + 0.5; // scale between 0.5 and 2
+      // We'll apply this scale factor to the animation timing if needed
 
       // Randomize animation duration
       const duration = Math.random() * 2 + 1; // Durations between 1s and 3s
       firework.style.animationDuration = duration + 's';
 
       // Randomize animation delay
-      const delay = Math.random() * 5; // 0 to 5 seconds
+      const delay = Math.random() * 3; // 0 to 3 seconds
       firework.style.animationDelay = delay + 's';
-
-      // Randomize opacity
-      const opacity = Math.random() * 0.5 + 0.5; // Opacity between 0.5 and 1
-      firework.style.opacity = opacity;
 
       // Append to container
       fireworkContainer.appendChild(firework);
